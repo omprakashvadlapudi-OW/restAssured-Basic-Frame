@@ -24,6 +24,8 @@ public class BaseTest {
 	public String initialEmployeeCsv;
 
 	public String token;
+	public String requestFolder;
+	public String csvFolder;
 
 	AuthAPI auth = new AuthAPI();
 
@@ -44,6 +46,9 @@ public class BaseTest {
 		delEmpRequestJson = PropertyReader.get("employee.delete.request");
 
 		initialEmployeeCsv = PropertyReader.get("initialCsv.employee");
+		
+		requestFolder=PropertyReader.get("request.folder");
+		csvFolder=PropertyReader.get("testCsv.folder");
 	}
 
 	@BeforeMethod

@@ -1,0 +1,19 @@
+{
+  "first_name": "${first_name}",
+  "last_name": "${last_name}",
+  "id": "20738",
+  "mobile_number": "${mobile_number}",
+  "email": "14jammmc@example.com",
+  "date_of_birth": "${date_of_birth}",
+  "joining_date": "${joining_date}",
+  "qualifications": "${qualifications}",
+  "designation": "${designation}",
+  "department": "${department}",
+  "address": "water melon",
+  "blood_group": "${blood_group}",
+  "gender": "${gender}",
+  "password": "${password}",
+  "role": "${role}",
+  "salary": "${salary}",
+  "reporting_to": "${reporting_to}"
+}

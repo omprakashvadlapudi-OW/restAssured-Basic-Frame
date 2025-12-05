@@ -3,6 +3,8 @@ package utils;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -35,19 +37,21 @@ public class FileUtils {
 	}
 
 	public static String applyDataToTemplate(String template, Map<String, String> data) {
-		String finalJson = template;
+	    String finalJson = template;
 
-		for (Map.Entry<String, String> entry : data.entrySet()) {
-			String key = entry.getKey();
-			String value = DynamicValueProcessor.process(entry.getValue());
+	    for (Map.Entry<String, String> entry : data.entrySet()) {
+	        String key = entry.getKey();
+	        String rawValue = entry.getValue();
+	        String processedValue = DynamicValueProcessor.process(rawValue);
 
-			finalJson = finalJson.replace("\"${" + key + "}\"", "\"" + value + "\"");
+	        String placeholder = "\\$\\{" + Pattern.quote(key) + "\\}";
 
-			finalJson = finalJson.replace("${" + key + "}", value);
-		}
+	        finalJson = finalJson.replaceAll(placeholder, Matcher.quoteReplacement(processedValue));
+	    }
 
-		return finalJson;
+	    return finalJson;
 	}
+
 
 
 }

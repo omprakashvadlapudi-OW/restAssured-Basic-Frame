@@ -4,7 +4,7 @@
 		<listener class-name="io.qameta.allure.testng.AllureTestNg" />
 	</listeners>
 	<test name="AddEmployee">
-		<parameter name="dataset" value="employee_tc01.csv" />
+		<parameter name="dataset" value="employee_new_test.csv" />
 		<classes>
 			<class name="tests.AddEmployeeTest" />
 		</classes>
