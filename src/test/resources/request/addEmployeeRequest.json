@@ -1,0 +1,19 @@
+{
+  "first_name": "${first_name}",
+  "last_name": "${last_name}",
+  "id": "${id}",
+  "mobile_number": "${mobile_number}",
+  "email": "${email}",
+  "date_of_birth": "${date_of_birth}",
+  "joining_date": "${joining_date}",
+  "qualifications": "${qualifications}",
+  "designation": "${designation}",
+  "department": "${department}",
+  "address": "${address}",
+  "blood_group": "${blood_group}",
+  "gender": "${gender}",
+  "password": "${password}",
+  "role": "${role}",
+  "salary": "${salary}",
+  "reporting_to": "${reporting_to}"
+}

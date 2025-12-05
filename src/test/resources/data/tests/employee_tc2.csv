@@ -1,0 +1,4 @@
+TestCaseID,Description,first_name,last_name,id,mobile_number,email,date_of_birth,joining_date,qualifications,designation,department,address,blood_group,gender,password,role,salary,reporting_to,response
+TC01,Add employee with random ID,Tako,Man,RANDOM(),9638537410,RANDOM_EMAIL(),1995-11-25,2025-11-26,Degree,Tester,Tester,Nothing,O+,Male,twl4test,Employee,126548855,twl4admin@gmail.com,"codeMessage=success"
+TC02,Add employee with fixed ID,Rocky,,RANDOM(),9876543210,RANDOM_EMAIL(),1995-11-26,2025-11-27,MBA,Manager,Operations,Bangalore park,A+,Male,welc0me,Manager,850000,twl4admin@gmail.com,"codeMessage=success"
+TC03,Add employee minimal update,Amy,,RANDOM(),9638527410,RANDOM_EMAIL(),1995-11-27,2025-11-28,MBA_BA,Manager,Operation,Bangalore,AB-,Male,welc0me,Manager,850000,twl4admin@gmail.com,"codeMessage=success"

@@ -1,0 +1,12 @@
+<suite name="EmployeeAPISuite">
+
+	<listeners>
+		<listener class-name="io.qameta.allure.testng.AllureTestNg" />
+	</listeners>
+	<test name="AddEmployee">
+		<parameter name="dataset" value="employee_tc01.csv" />
+		<classes>
+			<class name="tests.AddEmployeeTest" />
+		</classes>
+	</test>
+</suite>
