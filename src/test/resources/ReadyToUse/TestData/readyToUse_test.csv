@@ -1,0 +1,16 @@
+s.no,test_data,request,response
+1,"name=Apple MacBook Pro 16
+year=REMOVE
+price=1849.99
+cpu=Intel Core i9
+disk=1 TB",readyToUseRequest.json,status=20990
+2,"name=Dell XPS 15
+year=2021
+price=BLANK
+cpu=Intel Core i7
+disk=512 GB",,status=200
+3,"name=HP Pavilion
+year=NULL
+price=899.99
+cpu=REMOVE
+disk=256 GB",readyToUseRequest.json,status=200

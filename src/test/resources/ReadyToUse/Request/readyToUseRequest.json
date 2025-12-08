@@ -1,0 +1,9 @@
+{
+    "name": "${name}",
+    "data": {
+        "year": "${year}",
+        "price": "${price}",
+        "CPU model": "${cpu}",
+        "Hard disk size": "${disk}"
+    }
+}

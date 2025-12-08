@@ -1,12 +1,17 @@
-<suite name="EmployeeAPISuite">
+<suite name="API Test Suite">
 
 	<listeners>
 		<listener class-name="io.qameta.allure.testng.AllureTestNg" />
+		<listener class-name="listeners.ExtentReportListener" />
 	</listeners>
-	<test name="AddEmployee">
-		<parameter name="dataset" value="employee_new_test.csv" />
+
+
+
+	<test name="ReadyToUse">
+		<parameter name="dataset" value="readyToUse_test.csv" />
 		<classes>
-			<class name="tests.AddEmployeeTest" />
+			<class name="tests.ReadyToUseTest" />
 		</classes>
 	</test>
+
 </suite>

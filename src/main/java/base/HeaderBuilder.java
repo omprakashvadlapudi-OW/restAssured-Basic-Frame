@@ -26,4 +26,10 @@ public class HeaderBuilder {
 		return map;
 	}
 
+	public static Map<String, Object> jsonHeaders() {
+		Map<String, Object> map = new HashMap<>();
+		map.put("Content-Type", "application/json");
+		return map;
+	}
+
 }

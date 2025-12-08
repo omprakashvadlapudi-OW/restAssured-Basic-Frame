@@ -4,25 +4,25 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ResponseProcess {
-	public static Map<String, String> parseResponseExpectations(String responseBlock) {
-		Map<String, String> map = new HashMap<>();
 
-		if (responseBlock == null || responseBlock.trim().isEmpty()) {
-			return map;
+	public static Map<String, String> parseResponseExpectations(String responseString) {
+		Map<String, String> expectations = new HashMap<>();
+
+		if (responseString == null || responseString.trim().isEmpty()) {
+			return expectations;
 		}
 
-		responseBlock = responseBlock.replace("\\n", "\n");
-		responseBlock = responseBlock.replace("\r", "\n");
+		// Replace newlines with commas for consistent parsing
+		String normalized = responseString.replace("\n", ",").replace("\r", "");
 
-		String[] pairs = responseBlock.split("[\\n ]+");
-
-		for (String p : pairs) {
-			if (p.contains("=")) {
-				String[] kv = p.split("=", 2);
-				map.put(kv[0].trim(), kv[1].trim());
+		String[] pairs = normalized.split(",");
+		for (String pair : pairs) {
+			String[] keyValue = pair.split("=", 2);
+			if (keyValue.length == 2) {
+				expectations.put(keyValue[0].trim(), keyValue[1].trim());
 			}
 		}
-		return map;
-	}
 
+		return expectations;
+	}
 }

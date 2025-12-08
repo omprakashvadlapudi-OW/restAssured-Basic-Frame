@@ -5,23 +5,58 @@ import java.util.*;
 
 import com.opencsv.CSVReader;
 
+
 public class CsvUtils {
 
-	public static Map<String, String> readCsvAsMap(String filePath) {
+
+	public static List<Map<String, String>> readCsvListFromClasspath(String resourcePath) {
+		List<Map<String, String>> allRows = new ArrayList<>();
+
+		try (InputStream is = CsvUtils.class.getClassLoader().getResourceAsStream(resourcePath);
+				InputStreamReader isr = new InputStreamReader(is);
+				CSVReader reader = new CSVReader(isr)) {
+
+			if (is == null) {
+				throw new RuntimeException("CSV resource not found in classpath: " + resourcePath);
+			}
+
+			String[] headers = reader.readNext();
+			if (headers == null) {
+				throw new RuntimeException("CSV file is empty: " + resourcePath);
+			}
+
+			String[] line;
+			while ((line = reader.readNext()) != null) {
+				Map<String, String> row = new HashMap<>();
+				for (int i = 0; i < headers.length && i < line.length; i++) {
+					row.put(headers[i].trim(), line[i]);
+				}
+				allRows.add(row);
+			}
+
+		} catch (Exception e) {
+			throw new RuntimeException("Error reading CSV resource: " + resourcePath, e);
+		}
+
+		return allRows;
+	}
+
+	public static Map<String, String> readCsvFromClasspath(String resourcePath) {
 		Map<String, String> data = new HashMap<>();
 
-		try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
+		try (InputStream is = CsvUtils.class.getClassLoader().getResourceAsStream(resourcePath);
+				BufferedReader br = new BufferedReader(new InputStreamReader(is))) {
+
+			if (is == null) {
+				throw new RuntimeException("CSV resource not found in classpath: " + resourcePath);
+			}
 
 			String line;
 			while ((line = br.readLine()) != null) {
-
-				if (line.trim().isEmpty())
-					continue;
-				if (line.startsWith("#"))
+				if (line.trim().isEmpty() || line.startsWith("#"))
 					continue;
 
 				String[] parts = line.split(",", 2);
-
 				if (parts.length < 2)
 					continue;
 
@@ -29,36 +64,9 @@ public class CsvUtils {
 			}
 
 		} catch (Exception e) {
-			e.printStackTrace();
+			throw new RuntimeException("Error reading CSV resource: " + resourcePath, e);
 		}
 
 		return data;
 	}
-
-	public static List<Map<String, String>> readCsvAsList(String filePath) {
-		List<Map<String, String>> allRows = new ArrayList<>();
-
-		try (CSVReader reader = new CSVReader(new FileReader(filePath))) {
-
-			String[] headers = reader.readNext();
-			if (headers == null)
-				return allRows;
-
-			String[] line;
-			while ((line = reader.readNext()) != null) {
-
-				Map<String, String> row = new HashMap<>();
-				for (int i = 0; i < headers.length; i++) {
-					row.put(headers[i], line[i]);
-				}
-				allRows.add(row);
-			}
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-
-		return allRows;
-	}
-
 }
